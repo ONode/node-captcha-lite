@@ -59,11 +59,11 @@ const bezierPoints = [
 ];
 
 png.drawBezier(bezierPoints, {
-  tolerance: 0,
-  step: 1/1000, 
-  fixEndPointCurve: true,
-  handlerRatio: 0.5,
-  color: '#cc0044'
+  tolerance: 0, // 曲线线条扩宽的距离
+  step: 1/1000, // 每两个点之间绘制1000个点
+  fixEndPointCurve: true, // 是否绘制开始和结束点的曲线
+  handlerRatio: 0.5, // 贝塞尔曲线的句柄长度（连续贝塞尔模型）
+  color: '#cc0044' // 曲线的颜色
 });
 
 fs.writeFileSync(path.resolve(__dirname, './bezier.png'), png.getBuffer());
