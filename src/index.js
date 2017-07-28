@@ -2,6 +2,7 @@
 
 const PNGlib = require('node-pnglib');
 const FONTS = require('./font');
+const Bezier = require('./bezier');
 
 class Captcha extends PNGlib {
   constructor(...args) {
@@ -40,6 +41,21 @@ class Captcha extends PNGlib {
       }
     }
   }
+
+  drawBezier(bezierPoints, options = {}, color = '#cc0044') {
+    const { tolerance = 0, step = 1/1000, fixEndPointCurve = true, color: baseColor, handlerRatio = 0.5 } = options
+    const points = Bezier(bezierPoints, {
+      tolerance, 
+      step, 
+      fixEndPointCurve,
+      handlerRatio
+    });
+    for (let i = 0, len = points.length; i < len; i++) {
+      const point = points[i];
+      this.setPixel(point[0], point[1], baseColor || color);
+    }
+  }
+
 }
 
 module.exports = Captcha;
