@@ -1,6 +1,6 @@
 {
   "name": "captcha-lite",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Lite captcha generator by Pure Javascript.",
   "main": "lib/index.js",
   "scripts": {

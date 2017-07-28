@@ -4,11 +4,11 @@ const PNGlib = require('node-pnglib');
 const FONTS = require('./font');
 
 class Captcha extends PNGlib {
-  constructor(w, h) {
-    super(w, h);
+  constructor(...args) {
+    super(...args);
   }
 
-  drawChar(ch, x = 0, y = 0, font = FONTS.font8x16, color = '#ff0000') {
+  drawChar(ch, x = 0, y = 0, font = FONTS.f8x16Raw, color = '#ff0000') {
     let idx = font.chars.indexOf(ch);
 
     if (idx >= 0) {
@@ -43,6 +43,4 @@ class Captcha extends PNGlib {
 }
 
 module.exports = Captcha;
-module.exports.font8x16= FONTS.font8x16;
-module.exports.font12x24 = FONTS.font12x24;
-module.exports.font16x32 = FONTS.font16x32;
+module.exports.FONTS = FONTS;
